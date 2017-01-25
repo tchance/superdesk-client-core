@@ -1,10 +1,10 @@
-<div sd-modal data-model="template" data-close="cancel()" class="modal-huge template-editor-modal">
-    <div class="modal-header"> <a href="" class="close" ng-click="cancel()"><i class="icon-close-small"></i></a>
-        <h3 ng-show="template._id">{{ :: 'Edit Template'}}: <span>{{ origTemplate.template_name}}</span></h3>
-        <h3 ng-hide="template._id" translate>Add New Template</h3>
+<div sd-modal data-model="template" data-close="cancel()" class="modal--fill template-editor-modal">
+    <div class="modal__header"> <a href="" class="close" ng-click="cancel()"><i class="icon-close-small"></i></a>
+        <h3 class="modal__heading" ng-show="template._id">{{ :: 'Edit Template'}}: <span>{{ origTemplate.template_name}}</span></h3>
+        <h3 class="modal__heading" ng-hide="template._id" translate>Add New Template</h3>
     </div>
 
-    <div class="modal-body">
+    <div class="modal__body no-padding">
         <form class="template-content" name="templateForm">
             <div class="template-icon">
                 <i class="icon-text"></i>
@@ -12,7 +12,7 @@
 
             <div class="template-header">
                 <div sd-validation-error="error.template_name" data-required="true"
-                        class="authoring-header__item" sd-width="full">
+                     class="authoring-header__item" sd-width="full">
                     <input type="text" id="template-name" class="line-input" ng-model="template.template_name" placeholder="{{ :: 'Template name' | translate }}" required data-field="template_name" ng-disabled="template.template_name && template.template_type === 'kill'">
                 </div>
 
@@ -30,7 +30,7 @@
                 </div>
 
                 <div sd-validation-error="error.template_type" data-required="true"
-                        class="authoring-header__item " sd-width="half">
+                     class="authoring-header__item " sd-width="half">
                     <label for="template-type" translate>Template Type</label>
                     <div class="authoring-header__input-holder">
                         <select id="template-type"
@@ -67,8 +67,7 @@
                     <div class="multi-select" ng-if="template.template_type === 'create'">
                         <ul>
                             <li ng-repeat="desk in desks._items track by desk._id">
-                                <span sd-check ng-model="desk.selected" ng-click="onDeskToggle(desk)"></span>
-                                <span class="text" ng-click="toggleDesk(desk)">{{desk.name}}</span>
+                            <sd-check ng-model="desk.selected" ng-click="onDeskToggle(desk)">{{desk.name}}</sd-check>
                             </li>
                         </ul>
                     </div>
@@ -76,8 +75,8 @@
                             ng-model="template_desk" ng-change="setTemplateDesks(template_desk)"
                             class="dropdown__toggle line-input">
                         <option value="" translate>None</option>
-                        <option ng-repeat="desk in desks._items track by desk._id" value="{{ desk._id }}"
-                            ng-selected="desk.selected">{{ :: desk.name }}</option>
+                        <option ng-repeat="desk in desks._items track by desk._id" value="{{ desk._id}}"
+                                ng-selected="desk.selected">{{ :: desk.name}}</option>
                     </select>
                     <span class="arrow-down" ng-if="template.template_type !== 'create'"><b class="dropdown__caret"></b></span>
                 </div>
@@ -111,28 +110,28 @@
                 <div class="field target-field">
                     <label translate>Target Subscribers</label>
                     <div class="term-editor" sd-meta-terms
-                        data-item="item"
-                        data-unique="_id"
-                        data-list="metadata.customSubscribers"
-                        data-field="target_subscribers"
-                        data-reload-list="true"
-                        ></div>
+                         data-item="item"
+                         data-unique="_id"
+                         data-list="metadata.customSubscribers"
+                         data-field="target_subscribers"
+                         data-reload-list="true"
+                         ></div>
                 </div>
 
                 <div class="field target-field">
                     <label translate>Target Regions</label>
                     <div sd-meta-target
-                        data-list="metadata.regions"
-                        data-targets="item.target_regions"
-                        ></div>
+                         data-list="metadata.regions"
+                         data-targets="item.target_regions"
+                         ></div>
                 </div>
 
                 <div class="field target-field">
                     <label translate>Target Types</label>
                     <div sd-meta-target
-                        data-list="metadata.subscriberTypes"
-                        data-targets="item.target_types"
-                        ></div>
+                         data-list="metadata.subscriberTypes"
+                         data-targets="item.target_types"
+                         ></div>
                 </div>
             </div>
 
@@ -168,8 +167,8 @@
                         <select id="schedule-desk" ng-model="template.schedule_desk"
                                 ng-change="updateStages(template.schedule_desk)" class="dropdown__toggle line-input">
                             <option value="" translate>None</option>
-                            <option ng-repeat="desk in desks._items track by desk._id" value="{{ desk._id }}"
-                                ng-selected="desk._id === template.schedule_desk">{{ :: desk.name }}</option>
+                            <option ng-repeat="desk in desks._items track by desk._id" value="{{ desk._id}}"
+                                    ng-selected="desk._id === template.schedule_desk">{{ :: desk.name}}</option>
                         </select>
                         <span class="arrow-down"><b class="dropdown__caret"></b></span>
                     </div>
@@ -178,8 +177,8 @@
                     <label for="template-stage" translate>Schedule Stage</label>
                     <div class="authoring-header__input-holder">
                         <select id="template-stage" ng-model="template.schedule_stage" class="dropdown__toggle line-input">
-                            <option ng-repeat="stage in stages track by stage._id" value="{{ stage._id }}"
-                                ng-selected="stage._id === template.schedule_stage">{{ :: stage.name }}</option>
+                            <option ng-repeat="stage in stages track by stage._id" value="{{ stage._id}}"
+                                    ng-selected="stage._id === template.schedule_stage">{{ :: stage.name}}</option>
                         </select>
                         <span class="arrow-down"><b class="dropdown__caret"></b></span>
                     </div>
@@ -189,7 +188,7 @@
         </div>
     </div>
 
-    <div class="modal-footer">
+    <div class="modal__footer">
         <button class="btn" ng-click="cancel()" translate>Cancel</button>
         <button class="btn btn--primary"
                 ng-click="save()"
