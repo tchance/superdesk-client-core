@@ -79,7 +79,6 @@
     "grunt-usemin": "3.1.1",
     "grunt-webpack": "1.0.18",
     "html-loader": "0.4.5",
-    "jquery": "2.2.4",
     "jquery-jcrop": "0.9.13",
     "jquery-ui": "components/jqueryui#1.11.4",
     "jquery.gridster": "dustmoo/gridster.js#c306335397816beceb74e4a176067baef34a0359",
